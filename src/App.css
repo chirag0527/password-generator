@@ -1,38 +1,203 @@
-.App {
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html{
+  background-color: #14131B;
+}
+
+body{
+  color: white;
+  font-family: 'Space Mono', monospace;
+}
+
+.password, .main{
+  background-color: #212126;
+  width: 30%;
+  margin: auto;
+  padding: 15px 30px;
+}
+
+.password-main p{
+  margin-top: 100px; 
+  margin-bottom: 10px;
   text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #a6f8b1 0%, #68d6ef 25%, #f66e48 50%, #68d6ef 75%, #a6f8b1 100%);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  animation: animate 8s linear infinite;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes animate {
+  to{
+    background-position: 400%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.password{
+  margin-bottom: 20px; 
+  color: #55535B;
+  font-size: 25px;
+}
+  
+.main form {
   display: flex;
   flex-direction: column;
+}
+
+.character-length{
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.smol-text{
+  font-size: 15px;
+}
+
+.characterLength{
+  font-size: 30px;
+  color: #a6f8b1;
+}
+
+.slidecontainer {
+  width: 100%;
+  margin: 5px 0 15px 0;
+}
+
+.slider {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #a6f8b1;
+  outline: none;
+  -webkit-transition: .2s; 
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: white; 
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; 
+  height: 25px; 
+  background: white; 
+  cursor: pointer; 
+}
+
+.label{
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 1.5px solid white;
+}
+
+.container:hover input ~ .checkmark {
+  border: 1.5px solid #a6f8b1;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #a6f8b1;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 8px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.strength-container{
+  background-color: #14131B;
+  padding: 15px 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.strength-container > p{
+  color: #73717b; 
+}
+
+/* .strength-level{
+  display: flex;
+} */
+
+.strength-block{
+  width: 9px;
+  height: 27px;
+  border: 1px solid white;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.btn{
+  width: 100%;
+  margin-top: 20px;
+  height: 50px;
+  font-family: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #a6f8b1;
+}
+
+.btn:hover{
+  background-color: #212126;
+  border: 1px solid #a6f8b1;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
