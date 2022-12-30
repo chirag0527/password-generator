@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export default function Main(){
 
-    const [slider, setSlider] = useState("8")
+    const [slider, setSlider] = useState(8)
 
     const [checkedValue, setCheckedValue] = useState(0)
 
@@ -11,6 +11,7 @@ export default function Main(){
     const [includeNumbers, setIncludeNumbers] = useState(false);
     const [includeSpecial, setIncludeSpecial] = useState(false);
 
+    const [finalPassword, setFinalPassword] = useState('')
 
     function handleChange1(event){
       setSlider(event.target.value)
@@ -55,16 +56,55 @@ export default function Main(){
               break
           }
     }
+    
+    function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+      }
+  }
+        
+    function generatePassword(){
 
-    const block1 = document.querySelector('#block1')
-    const block2 = document.querySelector('#block2')
-    const block3 = document.querySelector('#block3')
-    const block4 = document.querySelector('#block4')
+      let lowercase = 'abcdefghijklmnopqrstuvwxyz'
+      let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      let numbers = '01234567890123456789'
+      let special = '!@#$%^&*!@#$%^&*!@#$%^&*'  
+      let generatedPassword = ""
 
 
-    console.log(checkedValue)
+      if(includeUppercase){
+        generatedPassword += uppercase 
+      }
+      if(includeLowercase){
+        generatedPassword += lowercase
+      }
+      if(includeNumbers){
+        generatedPassword += numbers 
+      }
+      if(includeSpecial){
+        generatedPassword += special
+      }
+
+      generatedPassword = generatedPassword.split("")
+      shuffleArray(generatedPassword)
+
+      setFinalPassword(generatedPassword.slice(0,slider))
+    }
+
+    
+    
     return(
-        <div className="main">
+      <div>
+      <div className="password-main">
+            <p><b>Password Generator</b></p>
+            <div className="password">
+                <p><b>{finalPassword == '' ? 'P4$5W0rD!' : finalPassword}</b></p>
+            </div>
+        </div>
+        <div className="main"> 
         <div className="slider-component">
             <div className="character-length">
                 <p className="smol-text">Character Length</p>
@@ -107,7 +147,8 @@ export default function Main(){
             style={{ backgroundColor: checkedValue >= 4 ? 'red' : 'inherit' }}></div>
             </div>
         </div>
-        <button className="btn">GENERATE</button>
+        <button className="btn" disabled={checkedValue<1} onClick={generatePassword}>GENERATE</button>
+        </div>
         </div>
     )
 }

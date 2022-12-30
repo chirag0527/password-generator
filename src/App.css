@@ -19,7 +19,7 @@ body{
   padding: 15px 30px;
 }
 
-.password-main p{
+.password-main > p{
   margin-top: 100px; 
   margin-bottom: 10px;
   text-align: center;
@@ -38,9 +38,10 @@ body{
 
 .password{
   margin-bottom: 20px; 
-  color: #55535B;
+  color: #a8a5ae;
   font-size: 25px;
 }
+
   
 .main form {
   display: flex;
@@ -200,4 +201,8 @@ body{
   background-color: #212126;
   border: 1px solid #a6f8b1;
   color: white;
+}
+
+.btn:disabled{
+  cursor:not-allowed;
 }
